@@ -1,0 +1,21 @@
+import { Request, Response } from "express";
+import catchAsync from "../../utils/catchAsync";
+import { ClinicServices } from "./clinic.service";
+import { sendResponse } from "../../utils/sendResponse";
+
+const createClinic = catchAsync(async (req: Request, res: Response) => {
+    const clinicData = req.body;
+    // console.log(clinicData);
+    const result = await ClinicServices.createClinicIntoDB(clinicData);
+    sendResponse(res, {
+        data: result,
+        message: 'Clinic Created successfully',
+        statusCode: 200,
+        success: true,
+        meta: null
+    })
+})
+
+export const ClinicController = {
+    createClinic
+}
