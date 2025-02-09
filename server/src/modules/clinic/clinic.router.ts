@@ -7,7 +7,7 @@ const router = Router();
 
 router.post(
     "/create",
-    auth(USER_ROLE.admin),
+    // auth(USER_ROLE.admin),
     ClinicController.createClinic
 )
 

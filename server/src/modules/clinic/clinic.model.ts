@@ -10,7 +10,7 @@ const ClinicSchema = new Schema<TClinic>({
     clinicName: { type: String, required: true },
     country: { type: String, required: true },
     city: { type: String, required: true },
-    images: { type: String, required: true },
+    image: { type: String, required: true },
     services: { type: [ServiceSchema], required: true },
     estimatedCost: { type: Number, required: true },
     usAverageCost: { type: Number, required: true },

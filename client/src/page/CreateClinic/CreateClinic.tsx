@@ -1,6 +1,8 @@
-import { useFieldArray, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { useCreateClinicMutation } from "../../redux/services/clinic/clinic.api";
 
 const CreateClinic = () => {
+    const [addClinic] = useCreateClinicMutation();
     const {
         register,
         handleSubmit,
@@ -19,8 +21,12 @@ const CreateClinic = () => {
     });
 
 
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async(data) => {
         console.log(data);
+        const res = await addClinic({...data,image:"test image"})
+        console.log(res);
+
+
     }
 
     return (
@@ -58,7 +64,7 @@ const CreateClinic = () => {
 
                             </div>
                         </div>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
                                 <label className="block ">Image</label>

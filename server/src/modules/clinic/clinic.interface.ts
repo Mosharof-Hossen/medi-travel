@@ -7,7 +7,7 @@ export type TClinic = {
     clinicName: string;
     country: string;
     city: string;
-    images: string;
+    image: string;
     services: TServices[];
     estimatedCost: number;
     usAverageCost: number;
