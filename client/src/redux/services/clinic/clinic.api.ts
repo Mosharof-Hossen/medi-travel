@@ -18,7 +18,14 @@ const clinicApi = baseApi.injectEndpoints({
             })
         }),
 
+        singleClinic: builder.query({
+            query: (id) => ({
+                url: `/clinic/details/${id}`,
+                method: "GET",
+            })
+        }),
+
     })
 })
 
-export const { useCreateClinicMutation, useGetAllClinicQuery } = clinicApi
+export const { useCreateClinicMutation, useGetAllClinicQuery, useSingleClinicQuery } = clinicApi

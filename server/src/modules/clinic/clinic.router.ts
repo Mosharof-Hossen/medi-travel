@@ -15,5 +15,9 @@ router.get(
     "/clinics",
     ClinicController.getClinics
 )
+router.get(
+    "/details/:id",
+    ClinicController.singleClinic
+)
 
 export const ClinicRouter = router;

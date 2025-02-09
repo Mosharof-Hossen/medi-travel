@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IHospitals } from "../../types/global";
 
 const HospitalCart = ({ hospital }: { hospital: IHospitals }) => {
@@ -24,8 +25,11 @@ const HospitalCart = ({ hospital }: { hospital: IHospitals }) => {
                 }
 
             </div>
-            <button className="w-full mt-4 py-2 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800">View
-                Details</button>
+            <Link to={`/service-details/${hospital._id}`}>
+                <button className="cursor-pointer w-full mt-4 py-2 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800">View
+                    Details
+                </button>
+            </Link>
         </div>
     );
 };

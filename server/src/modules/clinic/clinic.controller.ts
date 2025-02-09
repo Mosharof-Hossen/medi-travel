@@ -26,8 +26,19 @@ const getClinics = catchAsync(async (req: Request, res: Response) => {
         meta: null
     })
 })
+const singleClinic = catchAsync(async (req: Request, res: Response) => {
+    const result = await ClinicServices.getSingleClinicsFromDB(req.params.id);
+    sendResponse(res, {
+        data: result,
+        message: 'Single Clinic Clinics',
+        statusCode: 200,
+        success: true,
+        meta: null
+    })
+})
 
 export const ClinicController = {
     createClinic,
-    getClinics
+    getClinics,
+    singleClinic
 }
