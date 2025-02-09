@@ -4,6 +4,7 @@ import Home from "../page/Home/Home";
 import Login from "../components/Login/Login";
 import SignUp from "../components/Signup/SignUp";
 import CreateClinic from "../page/CreateClinic/CreateClinic";
+import Blogs from "../page/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "/blog",
+                element: <Blogs></Blogs>
             },
             {
                 path: "/login",

@@ -5,7 +5,6 @@ import { sendResponse } from "../../utils/sendResponse";
 
 const createClinic = catchAsync(async (req: Request, res: Response) => {
     const clinicData = req.body;
-    // console.log(clinicData);
     const result = await ClinicServices.createClinicIntoDB(clinicData);
     sendResponse(res, {
         data: result,
@@ -16,6 +15,19 @@ const createClinic = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
+
+const getClinics = catchAsync(async (req: Request, res: Response) => {
+    const result = await ClinicServices.getAllClinicsFromDB();
+    sendResponse(res, {
+        data: result,
+        message: 'All Clinics',
+        statusCode: 200,
+        success: true,
+        meta: null
+    })
+})
+
 export const ClinicController = {
-    createClinic
+    createClinic,
+    getClinics
 }
