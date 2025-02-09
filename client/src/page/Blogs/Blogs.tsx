@@ -18,7 +18,7 @@ const Blogs = () => {
                             </div>
                             <div>
                                 <div className="flex space-x-2 items-center">
-                                    <img src = {doctor1} alt="" className="w-8 h-8"/>
+                                    <img src={doctor1} alt="" className="w-8 h-8" />
                                     <div>
                                         <h6 className="font-bold text-sm">Dr. Emily Carter</h6>
                                         <p className="text-xs text-gray-500">Posted on March 15, 2025</p>
@@ -31,14 +31,14 @@ const Blogs = () => {
                                 <button className="flex items-center space-x-1 cursor-pointer"><span>Read More</span> <FaArrowRight></FaArrowRight></button>
                             </div>
                         </div>
-                        
+
                         <div className="bg-white  p-6 rounded-lg border border-gray-300 mb-6">
                             <div className="mb-6  h-[300px] rounded flex items-center justify-center">
                                 <img src={blog2} alt="" className="w-full h-full object-cover" />
                             </div>
                             <div>
                                 <div className="flex space-x-2 items-center">
-                                    <img src = {doctor2} alt="" className="w-8 h-8"/>
+                                    <img src={doctor2} alt="" className="w-8 h-8" />
                                     <div>
                                         <h6 className="font-bold text-sm">Dr. Jonathan Smith</h6>
                                         <p className="text-xs text-gray-500">Posted on March 25, 2025</p>
@@ -53,28 +53,36 @@ const Blogs = () => {
                         </div>
 
                     </div>
-                    <div className="lg:w-1/3">
-                        <div className="bg-white p-6 rounded-lg border border-gray-300 sticky top-24">
-                            <h2 className="text-xl font-semibold mb-4">Contact Hospital</h2>
+                    <div className="lg:w-1/3 space-y-5">
+                        <div className="bg-white p-6 rounded-lg border border-gray-300 ">
+                            <h2 className="text-xl font-semibold mb-4">Categories</h2>
+                            <div className="space-y-2">
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <p >Dental Procedures</p>
+                                    <p className="bg-gray-200 rounded-full px-1">24</p>
+                                </div>
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <p >Cosmetic Surgery</p>
+                                    <p className="bg-gray-200 rounded-full px-1">18</p>
+                                </div>
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <p >Orthopedics</p>
+                                    <p className="bg-gray-200 rounded-full px-1">15</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div className="bg-white p-6 rounded-lg border border-gray-300 ">
+                            <h2 className="text-xl font-semibold mb-4">Newsletter</h2>
+                            <p className="text-sm text-gray-500 mb-2">Stay updated with the latest medical travel insights</p>
                             <form className="space-y-4">
+
                                 <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">Name</label>
-                                    <input type="text" className="w-full p-2 border border-gray-300 rounded-lg" />
+                                    <input type="email" placeholder="Your Email Address" className="w-full p-2 border border-gray-300 rounded-lg" />
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">Email</label>
-                                    <input type="email" className="w-full p-2 border border-gray-300 rounded-lg" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">Phone</label>
-                                    <input type="tel" className="w-full p-2 border border-gray-300 rounded-lg" />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">Message</label>
-                                    <textarea className="w-full p-2 border border-gray-300 rounded-lg h-32"></textarea>
-                                </div>
+
                                 <button className="w-full py-3 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800">
-                                    Send Message
+                                    Subscribe
                                 </button>
                             </form>
                             <div className="mt-6 pt-6 border-t">

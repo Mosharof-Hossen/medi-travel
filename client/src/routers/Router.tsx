@@ -6,6 +6,7 @@ import SignUp from "../components/Signup/SignUp";
 import CreateClinic from "../page/CreateClinic/CreateClinic";
 import Blogs from "../page/Blogs/Blogs";
 import HospitalDetails from "../components/hospitals/HospitalDetails";
+import About from "../page/About/About";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/service-details/:id",
                 element: <HospitalDetails></HospitalDetails>
+            },
+            {
+                path: "/about",
+                element: <About></About>
             },
         ]
     },
