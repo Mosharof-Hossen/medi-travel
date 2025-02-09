@@ -1,11 +1,23 @@
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 
 const CreateClinic = () => {
     const {
         register,
         handleSubmit,
+        control,
         formState: { errors },
-    } = useForm()
+    } = useForm({
+        defaultValues: {
+            services: [{ procedure: "", price: "" }],
+            // aboutClinic: "",
+        },
+    })
+
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "services",
+    });
+
 
     const onSubmit = (data) => {
         console.log(data);
@@ -46,6 +58,7 @@ const CreateClinic = () => {
 
                             </div>
                         </div>
+                        
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
                                 <label className="block ">Image</label>
@@ -82,17 +95,46 @@ const CreateClinic = () => {
                             </div>
                         </div>
 
+                        {fields.map((item, index) => (
+                            <div key={item.id} className="flex gap-2 mb-2">
+                                <input
+                                    {...register(`services.${index}.procedure` as const)}
+                                    placeholder="Add a procedure"
+                                    className="border p-2 rounded w-full border-gray-300"
+                                />
+                                <input
+                                    {...register(`services.${index}.price` as const)}
+                                    placeholder="Price"
+                                    className="border p-2 rounded w-24 border-gray-300"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => remove(index)}
+                                    className="cursor-pointer bg-red-500 text-white px-2 rounded"
+                                >
+                                    X
+                                </button>
+                            </div>
+                        ))}
+
+                        <button
+                            type="button"
+                            onClick={() => append({ procedure: "", price: "" })}
+                            className="bg-blue-500 text-white px-3 py-1 rounded"
+                        >
+                            + Add Procedure
+                        </button>
+
                         <div className="space-y-1 text-sm">
                             <label className="block ">Notes</label>
                             <textarea placeholder="Short notes........" {...register("notes", { required: true })} className="textarea textarea-bordered textarea-lg text-justify w-full" />
-                            {/* <input type="text" id="notes" placeholder="Shorts Notes"  {...register("notes", { required: true })} className="w-full px-4 py-3 rounded-md border-gray-300" /> */}
                             {
                                 errors?.notes && <p><small className="text-red-500">Notes is Required</small></p>
                             }
                         </div>
 
 
-                        <button className="bg-[#22292f] hover:bg-black block w-full p-3 text-white text-center rounded-sm ">Sign Up</button>
+                        <button className="bg-[#22292f] hover:bg-black block w-full p-3 text-white text-center rounded-sm ">Create</button>
 
 
                     </form>
