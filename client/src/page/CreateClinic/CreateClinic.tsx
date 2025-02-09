@@ -1,17 +1,29 @@
 import { FieldValues, SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { useCreateClinicMutation } from "../../redux/services/clinic/clinic.api";
+import axios from 'axios';
+import { toast } from "sonner";
+import { useState } from "react";
+
 
 const CreateClinic = () => {
+    const [error, setError] = useState("")
     const [addClinic] = useCreateClinicMutation();
     const {
         register,
         handleSubmit,
         control,
-        formState: { errors },
+        formState: { errors }, reset,
     } = useForm({
         defaultValues: {
             services: [{ procedure: "", price: "" }],
-            // aboutClinic: "",
+            clinicName: "",
+            country: "",
+            city: "",
+            estimatedCost: "",
+            usAverageCost: "",
+            savings: "",
+            image: "",
+            notes: ""
         },
     })
 
@@ -21,26 +33,54 @@ const CreateClinic = () => {
     });
 
 
-    const onSubmit: SubmitHandler<FieldValues> = async(data) => {
-        console.log(data);
-        const res = await addClinic({...data,image:"test image"})
-        console.log(res);
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+        if (data.image.length > 0) {
+            const imageFile = { image: data.image[0] }
+            console.log(imageFile);
+            const res = await axios.post(`https://api.imgbb.com/1/upload?key=08e0eb78ba17d707afdc6a6b3037897f`,
+                imageFile, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+            if (res.data.status == 200) {
+                // console.log(res);
+                // console.log(res.data.data.display_url);
+                const result = await addClinic({ ...data, image: res?.data.data.display_url });
+                if (result.data) {
+                    toast.success("Clinic Created Successfully")
+                    setError("")
+                    reset()
+                }
+                else {
+                    toast.error("Some thing Went Wrong.")
+                }
+            }
+        }
+        else {
+            setError("Please Add Image")
+        }
 
+
+
+        // console.log(data);
+        // const res = await addClinic({ ...data, image: "test image" })
+        // console.log(res);
 
     }
 
     return (
-        <div className="min-h-screen bg-neutral-50">
+        <div className="min-h-screen bg-neutral-50 px-10">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-8 pt-8">Create Your Clinic Profile</h1>
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-lg shadow p-6 ">
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
                         <div className="space-y-1 text-sm">
                             <label className="block ">Clinic Name</label>
                             <input type="text" id="clinicName" placeholder="Clinic Name"  {...register("clinicName", { required: true })} className="w-full px-4 py-3 rounded-md border-gray-300" />
                             {
-                                errors?.clinicName && <p><small className="text-red-500">Clinic Name is Required</small></p>
+                                errors && errors?.clinicName && <p><small className="text-red-500">Clinic Name is Required</small></p>
                             }
 
                         </div>
@@ -69,7 +109,9 @@ const CreateClinic = () => {
                             <div>
                                 <label className="block ">Image</label>
                                 <input type="file" className="file-input file-input-bordered w-full " {...register("image")} />
-
+                                {
+                                    error && <p><small className="text-red-500">{error}</small></p>
+                                }
                             </div>
                             <div className="space-y-1 text-sm">
                                 <label className="block ">Estimate Cost</label>
@@ -146,7 +188,6 @@ const CreateClinic = () => {
                     </form>
                 </div>
             </div>
-            dsf
         </div>
     );
 };
