@@ -1,17 +1,42 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { FaPlaneDeparture } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../../redux/services/auth/auth.api';
+import { toast } from 'sonner';
+import { jwtDecode } from 'jwt-decode';
+import { useAppDispatch } from '../../redux/hook';
+import { setUser } from '../../redux/services/auth/authSlice';
 
 const Login = () => {
+    const [login] = useLoginMutation();
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch();
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm()
+    } = useForm({
+        defaultValues:{
+            email:"admin@admin.com",
+            password:"12345"
+        }
+    })
 
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         console.log(data);
+        const res = await login(data);
+        console.log(res);
+        if (res.error) {
+            toast.error("Invalid Email or Password")
+        }
+        else {
+            const user = jwtDecode(res.data?.data?.accessToken as string)
+            dispatch(setUser({ user: user, token: res.data?.data.accessToken }))
+            console.log(res?.data.data.accessToken);
+            console.log({ user: user, token: res.data?.data.accessToken });
+            toast.success(res.data?.message)
+            // navigate("/")
+        }
     }
 
     return (
