@@ -35,7 +35,7 @@ const Login = () => {
             console.log(res?.data.data.accessToken);
             console.log({ user: user, token: res.data?.data.accessToken });
             toast.success(res.data?.message)
-            // navigate("/")
+            navigate("/")
         }
     }
 
