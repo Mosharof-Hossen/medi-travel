@@ -3,7 +3,7 @@ import Hospitals from "../../components/hospitals/Hospitals";
 
 const Home = () => {
     return (
-        <div>
+        <div className="bg-neutral-50">
             <Banner></Banner>
             <Hospitals></Hospitals>
         </div>
