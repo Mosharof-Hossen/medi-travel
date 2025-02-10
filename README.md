@@ -2,7 +2,7 @@
 ## Api Link : [Link](https://medi-travel-server.vercel.app/)
 ## Live Site : [Link](https://medi-travel-client.vercel.app/)
 
-BikeHut is a modern and user-friendly E-commerce platform where buyers can browse, purchase, and review new and used bikes effortlessly. Sellers can also list their bikes, manage orders, and track payments seamlessly.
+MediTravel is a **full-featured medical travel management platform** where users can browse hospitals, read blogs, and (for admins) create new clinics.  
 
 ## Technologies
 
@@ -36,7 +36,7 @@ npm install
 ```
 Step 3: Run
 ```javascript
-npm run build
+npm run dev
 ```
 
 ### Backend
@@ -47,7 +47,7 @@ https://github.com/Mosharof-Hossen/medi-travel.git
 
 Step 2: Install Dependencies
 ``` javascript
-cd client
+cd server
 npm install
 ```
 
