@@ -4,6 +4,20 @@
 
 MediTravel is a **full-featured medical travel management platform** where users can browse hospitals, read blogs, and (for admins) create new clinics.  
 
+## 🌟 Features  
+✅ **Authentication & Authorization**  
+   - 🔐 JSON Web Token (JWT) Authentication  
+   - 🎭 Role-Based Access Control (RBAC) (User/Admin)  
+   - 🔄 Persistent Login (Redux Persistor & Local Storage)  
+
+✅ **User Interface & Navigation**  
+   - 🏠 **Home Page**: Includes a banner, top hospitals listing, and footer  
+   - 🏥 **Hospital Details Page**: Displays detailed information about selected hospitals  
+   - 📖 **Blog Page**: Contains blogs related to medical travel  
+   - 📜 **About Page**: Provides information about MediTravel  
+   - 🏥 **Create Clinic Page (Admin Only)**: Allows admins to add new clinics (**Private Route**)  
+
+
 ## Technologies
 
 *   **TypeScript**
