@@ -7,6 +7,7 @@ BikeHut is a modern and user-friendly E-commerce platform where buyers can brows
 ## Technologies
 
 *   **TypeScript**
+*   **React.Js**
 *   **Node.js**
 *   **Express.js**
 *   **MongoDB with Mongoose**
@@ -17,44 +18,53 @@ BikeHut is a modern and user-friendly E-commerce platform where buyers can brows
 Admin Email and Password:
 {
     "email": "admin@admin.com",
-    "password": "123456"
+    "password": "12345"
 }
 
 
-```
 ## **Project setup guideline**
-
+### Frontend
 Step 1: Clone the Repository
 ``` git
-https://github.com/Mosharof-Hossen/bike-store-app.git
+https://github.com/Mosharof-Hossen/medi-travel.git
 ```
+
 Step 2: Install Dependencies
 ``` javascript
+cd client
 npm install
 ```
+Step 3: Run
+```javascript
+npm run build
+```
+
+### Backend
+Step 1: Clone the Repository
+``` git
+https://github.com/Mosharof-Hossen/medi-travel.git
+```
+
+Step 2: Install Dependencies
+``` javascript
+cd client
+npm install
+```
+
 Step 3: Set Up Backend Environment Variables
 ``` javascript
 PORT = 4000
 DATABASE_URL = ----------
-NODE_ENV = development
-SALT_ROUND = 12
 JWT_ACCESS_SECRET = -------
-
-
-SP_ENDPOINT=--------------
-SP_USERNAME=----------
-SP_PASSWORD=-----------
-SP_PREFIX=--------
-SP_RETURN_URL= ----------------
 ```
-Step 4: Compile TypeScript Code
-```javascript
-npm run build
-```
-Step 5: Start the Server
+
+Step 54: Start the Server
 ```javascript
 npm run start:dev
 ```
+
+
+
 
 Author <br>
 Mosharof Hossen <br>
