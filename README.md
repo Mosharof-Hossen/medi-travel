@@ -77,6 +77,27 @@ Step 54: Start the Server
 npm run start:dev
 ```
 
+# Home Page
+![Home Page](https://github.com/user-attachments/assets/4ca3a277-1e08-4ab3-a8f1-be44272fbe01)
+
+# Hospital Details
+![details](https://github.com/user-attachments/assets/ffb5cff1-c6d4-47b8-a6bc-5564527e3e33)
+
+# Create Clinic
+![create-clinic](https://github.com/user-attachments/assets/956ea387-f00a-4357-b9a9-bc5a36166b76)
+
+# Blogs
+![blogs](https://github.com/user-attachments/assets/54ac5d79-4ecb-4a6d-9b6d-7060ae2d74b6)
+
+# Sign up
+![signup](https://github.com/user-attachments/assets/1078e328-2263-4ede-966e-f00d8304df9c)
+
+# Login
+![login](https://github.com/user-attachments/assets/7f8a4b32-ec2f-445f-ac20-ba8ad9f5652d)
+
+# About
+![about](https://github.com/user-attachments/assets/8165ae40-6df0-4f4c-8be0-1387a0ae046b)
+
 
 
 
