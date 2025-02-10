@@ -1,4 +1,4 @@
-# Project Name : BikeHut
+# Project Name : MediTravel
 ## Api Link : [Link](https://medi-travel-server.vercel.app/)
 ## Live Site : [Link](https://medi-travel-client.vercel.app/)
 
