@@ -1,16 +1,30 @@
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { FaPlaneDeparture } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignUpMutation } from "../../redux/services/auth/auth.api";
+import { toast } from "sonner";
 
 const SignUp = () => {
+    const [signUp] = useSignUpMutation();
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
 
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         console.log(data);
+        const res = await signUp(data);
+        console.log(res);
+        if (res.error) {
+            toast.error("Provide Valid Email.")
+        }
+        else {
+            toast.success(res.data?.message)
+            navigate("/login")
+        }
     }
 
     return (

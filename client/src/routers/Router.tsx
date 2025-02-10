@@ -7,6 +7,7 @@ import CreateClinic from "../page/CreateClinic/CreateClinic";
 import Blogs from "../page/Blogs/Blogs";
 import HospitalDetails from "../components/hospitals/HospitalDetails";
 import About from "../page/About/About";
+import FindClinics from "../page/FindClinics/FindClinics";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "/find-clinic",
+                element: <FindClinics></FindClinics>
             },
             {
                 path: "/blog",

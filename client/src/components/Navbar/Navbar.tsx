@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     const links = <>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/"}><li>Home</li></NavLink>
-        <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/"}><li>Find Clinics</li></NavLink>
+        <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/find-clinic"}><li>Find Clinics</li></NavLink>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/blog"}><li>Blog</li></NavLink>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/about"}><li>About</li></NavLink>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/create-clinic"}><li>Create Clinic</li></NavLink>
