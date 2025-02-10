@@ -7,7 +7,8 @@ const clinicApi = baseApi.injectEndpoints({
                 url: "/clinic/create",
                 method: "POST",
                 body: clinicInfo
-            })
+            }),
+            invalidatesTags: ["clinics"]
         }),
 
 
@@ -15,7 +16,9 @@ const clinicApi = baseApi.injectEndpoints({
             query: () => ({
                 url: "/clinic/clinics",
                 method: "GET",
-            })
+            }),
+            providesTags: ["clinics"]
+
         }),
 
         singleClinic: builder.query({

@@ -1,13 +1,27 @@
 import { FaPlaneDeparture } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { jwtDecode } from "jwt-decode"
+import { logout, TUser, useCurrentToken } from "../../redux/services/auth/authSlice";
 
 const Navbar = () => {
+
+    const token = useAppSelector(useCurrentToken);
+    const dispatch = useAppDispatch();
+    let user;
+    if (token) {
+        user = jwtDecode(token) as TUser;
+    }
+
     const links = <>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/"}><li>Home</li></NavLink>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/find-clinic"}><li>Find Clinics</li></NavLink>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/blog"}><li>Blog</li></NavLink>
         <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/about"}><li>About</li></NavLink>
-        <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/create-clinic"}><li>Create Clinic</li></NavLink>
+        {
+            user?.role === "admin" &&
+            <NavLink className={`text-gray-600 hover:text-gray-800 text-lg font-semibold`} to={"/create-clinic"}><li>Create Clinic</li></NavLink>
+        }
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm flex justify-between">
@@ -44,9 +58,15 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <Link to={"/login"}>
-                    <button className="px-4 py-2 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800">Get Started</button>
-                </Link>
+                {
+                    user?.email ?
+                        <button onClick={() => dispatch(logout())} className="px-4 py-2 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800">Log out</button>
+                        : <Link to={"/login"}>
+                            <button className="px-4 py-2 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800">Get Started</button>
+                        </Link>
+
+                }
+
             </div>
         </div>
     );

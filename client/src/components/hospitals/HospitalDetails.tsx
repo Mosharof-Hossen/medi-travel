@@ -75,7 +75,7 @@ const HospitalDetails = () => {
 
                                                 {
                                                     data?.data?.services.map((service) =>
-                                                        <div className="flex justify-between items-center p-4 bg-neutral-100 rounded">
+                                                        <div key={service._id} className="flex justify-between items-center p-4 bg-neutral-100 rounded">
                                                             <span>{service.procedure}</span>
                                                             <span className="font-semibold">${service.price}</span>
                                                         </div>)

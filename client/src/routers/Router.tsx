@@ -8,6 +8,7 @@ import Blogs from "../page/Blogs/Blogs";
 import HospitalDetails from "../components/hospitals/HospitalDetails";
 import About from "../page/About/About";
 import FindClinics from "../page/FindClinics/FindClinics";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/create-clinic",
-                element: <CreateClinic></CreateClinic>
+                element: <PrivateRouter role="admin"><CreateClinic></CreateClinic></PrivateRouter>
             },
             {
                 path: "/service-details/:id",

@@ -15,12 +15,7 @@ const Login = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm({
-        defaultValues:{
-            email:"admin@admin.com",
-            password:"12345"
-        }
-    })
+    } = useForm()
 
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
         console.log(data);
